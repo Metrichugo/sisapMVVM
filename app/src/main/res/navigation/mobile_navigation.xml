@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_solicitudes">
+
+    <fragment
+        android:id="@+id/navigation_solicitudes"
+        android:name="com.telcel.gsa.sisap.ui.incidents.IncidentsFragment"
+        android:label="@string/title_solicitudes"
+        tools:layout="@layout/fragment_incidents" />
+
+    <fragment
+        android:id="@+id/navigation_incidencias"
+        android:name="com.telcel.gsa.sisap.ui.incidents.IncidentsFragment"
+        android:label="@string/title_incidencias"
+        tools:layout="@layout/fragment_incidents" />
+</navigation>

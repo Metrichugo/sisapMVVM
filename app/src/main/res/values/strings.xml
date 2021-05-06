@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SISAP Móvil</string>
+    <string name="title_solicitudes">Solicitudes</string>
+    <string name="title_incidencias">Incidencias</string>
+</resources>
