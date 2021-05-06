@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--Set application-wide security config using base-config tag.-->
+    <!-- Cambiar la bandera de trafico en texto claro cuando se haga la liberación a producción -->
+    <base-config cleartextTrafficPermitted="true"/>
+    <!--domain-config>
+        <domain includeSubdomains="true">oam.telcelinstitucional.com</domain>
+        <pin-set expiration="2021-05-16">
+            <pin digest="SHA-256">JbQbUG5JMJUoI6brnx0x3vZF6jilxsapbXGVfjhN8Fg=</pin>
+            <pin digest="SHA-256">9n0izTnSRF+W4W4JTq51avSXkWhQB8duS2bxVLfzXsY=</pin>
+            <pin digest="SHA-256">VtGh8wzMKo6xbA1KtaT0JXjsylt70EbjELtADh/UDtc=</pin>
+        </pin-set>
+    </domain-config-->
+    <!--domain-config>
+        <domain includeSubdomains="true">m.sisact.telcel.com</domain>
+        <pin-set expiration="2021-12-16">
+            <pin digest="SHA-256">r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=</pin>
+            <pin digest="SHA-256">RQeZkB42znUfsDIIFWIRiYEcKl7nHwNFwWCrnMMJbVc=</pin>
+            <pin digest="SHA-256">VtGh8wzMKo6xbA1KtaT0JXjsylt70EbjELtADh/UDtc=</pin>
+        </pin-set>
+    </domain-config-->
+</network-security-config>
