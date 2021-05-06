@@ -11,3 +11,7 @@ data class Incidence(
 data class IncidentsList(
     @Json(name = "detalleIncidenciasSimple") val incidentsList: List<Incidence>
 )
+
+data class IncidenceRequest(
+    @Json(name = "idEmpleado") var idEmployee : String
+)
