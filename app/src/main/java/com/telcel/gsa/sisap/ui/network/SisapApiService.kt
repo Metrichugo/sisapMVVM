@@ -24,8 +24,8 @@ interface SisapApiService {
 
     @Headers("Content-Type: application/json; charset=utf-8",
         "messageUUID: 356904090414635")
-    @POST("lif/incidentsFolio")
-    fun getIncidentsCallback(@Body incidenceRequest: IncidenceRequest) : Call<IncidentsList>
+    @POST("rpa/pendingAction")
+    suspend fun getFolios(@Body foliosRequest: FoliosRequest) : FoliosList
 }
 
 object SisapApi {
