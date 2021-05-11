@@ -28,7 +28,7 @@ class IncidentsAdapter: ListAdapter<Incidence,IncidentsAdapter.IncidentsListView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IncidentsListViewHolder {
-        return IncidentsListViewHolder(IncidenceItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return IncidentsListViewHolder(IncidenceItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder: IncidentsListViewHolder, position: Int) {

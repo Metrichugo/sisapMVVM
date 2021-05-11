@@ -10,7 +10,6 @@
         android:name="com.telcel.gsa.sisap.ui.solicitudes.FolioFragment"
         android:label="@string/title_solicitudes"
         tools:layout="@layout/fragment_folio" >
-        <action app:popUpToInclusive="false"/>
     </fragment>
 
     <fragment
@@ -18,6 +17,5 @@
         android:name="com.telcel.gsa.sisap.ui.incidents.IncidentsFragment"
         android:label="@string/title_incidencias"
         tools:layout="@layout/fragment_incidents">
-        <action app:popUpToInclusive="false"/>
     </fragment>
 </navigation>

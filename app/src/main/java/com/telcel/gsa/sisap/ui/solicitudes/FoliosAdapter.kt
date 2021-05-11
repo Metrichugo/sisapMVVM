@@ -29,7 +29,7 @@ class FoliosAdapter: ListAdapter<Folio,FoliosAdapter.FoliosListViewHolder>(DiffC
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoliosListViewHolder {
-        return FoliosListViewHolder(FolioItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return FoliosListViewHolder(FolioItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder: FoliosListViewHolder, position: Int) {

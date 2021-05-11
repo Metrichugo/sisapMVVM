@@ -19,6 +19,6 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:foliosListData= "@{viewModel.folios.foliosList}"
             tools:itemCount="16"
-            tools:listitem="@layout/incidence_item"/>
+            tools:listitem="@layout/folio_item"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

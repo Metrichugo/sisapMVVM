@@ -7,12 +7,12 @@
             name="folio"
             type="com.telcel.gsa.sisap.ui.network.Folio" />
     </data>
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         app:cardCornerRadius="@dimen/cardview_default_radius"
-        app:cardElevation="@dimen/cardview_default_elevation">
+        app:cardElevation="@dimen/high_card_elevation">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -27,7 +27,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/division_line"
-                tools:text="000001"/>
+                tools:text="000001"
+                style="@style/TextAppearance.Title.Cardview"/>
             <TextView
                 android:id="@+id/folio_status"
                 android:layout_width="wrap_content"
@@ -39,12 +40,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/division_line"
-                tools:text="Clasificar"/>
+                tools:text="Clasificar"
+                style="@style/TextAppearance.Body.Cardview"/>
             <View
                 android:id="@+id/division_line"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/black"
+                android:layout_height="@dimen/division_line_height"
+                android:background="@color/gray"
                 app:layout_constraintTop_toBottomOf="@id/id_folio"
                 app:layout_constraintBottom_toTopOf="@id/folio_title"/>
             <TextView
@@ -58,7 +60,8 @@
                 app:layout_constraintTop_toBottomOf="@id/division_line"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="TITULO FOLIO"/>
+                tools:text="TITULO FOLIO"
+                style="@style/TextAppearance.Title"/>
             <TextView
                 android:id="@+id/folio_creation_date"
                 android:layout_width="wrap_content"
@@ -70,7 +73,8 @@
                 app:layout_constraintTop_toBottomOf="@id/folio_title"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="01/01/1990"/>
+                tools:text="01/01/1990"
+                style="@style/TextAppearance.Body.Cardview"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>
