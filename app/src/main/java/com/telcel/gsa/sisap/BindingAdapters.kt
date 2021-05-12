@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.telcel.gsa.sisap.ui.incidents.IncidentsAdapter
 import com.telcel.gsa.sisap.ui.network.Folio
 import com.telcel.gsa.sisap.ui.network.Incidence
-import com.telcel.gsa.sisap.ui.solicitudes.FoliosAdapter
+import com.telcel.gsa.sisap.ui.folio.FoliosAdapter
 
 @BindingAdapter("incidentsListData")
 fun bindRecyclerView(recyclerView: RecyclerView, data : List<Incidence>?){

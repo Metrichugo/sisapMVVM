@@ -23,16 +23,4 @@
     <color name="color_error">  #b00020</color>
     <color name="color_on_error">#FFFFFF</color>
 
-    <color name="color_primary_dark">#039BE5</color>
-    <color name="color_primary_variant_dark">#B3E5FC</color>
-    <color name="color_on_primary_dark">#FFFFFF</color>
-    <color name="color_secondary_dark">#039BE5</color>
-    <color name="color_secondary_variant_dark"> #0376BD</color>
-    <color name="color_on_secondary_dark">#FFFFFF</color>
-    <color name="color_background_dark">#002278</color>
-    <color name="color_on_background_dark">#FFFFFF</color>
-    <color name="color_surface_dark">#00338D</color>
-    <color name="color_on_surface_dark">#FFFFFF</color>
-    <color name="color_error_dark">#cf6679</color>
-    <color name="color_on_error_dark">#000000</color>
 </resources>

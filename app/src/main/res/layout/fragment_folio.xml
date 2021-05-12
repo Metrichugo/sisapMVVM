@@ -5,17 +5,39 @@
     <data>
         <variable
             name="viewModel"
-            type="com.telcel.gsa.sisap.ui.solicitudes.FolioViewModel"/>
+            type="com.telcel.gsa.sisap.ui.folio.FolioViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <HorizontalScrollView
+            android:id="@+id/scroll_view_chips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/state_chip_group_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/chip_margin"
+                android:paddingEnd="@dimen/chip_margin"
+                app:singleLine="true">
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/incidents_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:padding="@dimen/activity_horizontal_padding"
             android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@+id/scroll_view_chips"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:foliosListData= "@{viewModel.folios.foliosList}"
             tools:itemCount="16"

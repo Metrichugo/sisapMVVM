@@ -7,9 +7,18 @@
 
     <fragment
         android:id="@+id/navigation_solicitudes"
-        android:name="com.telcel.gsa.sisap.ui.solicitudes.FolioFragment"
+        android:name="com.telcel.gsa.sisap.ui.folio.FolioFragment"
         android:label="@string/title_solicitudes"
         tools:layout="@layout/fragment_folio" >
+        <action
+            android:id="@+id/action_navigation_solicitudes_to_navigation_detail_folio"
+            app:destination="@id/navigation_detail_folio"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@id/navigation_solicitudes"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
     </fragment>
 
     <fragment
@@ -18,4 +27,9 @@
         android:label="@string/title_incidencias"
         tools:layout="@layout/fragment_incidents">
     </fragment>
+    <fragment
+        android:id="@+id/navigation_detail_folio"
+        android:name="com.telcel.gsa.sisap.ui.foliodetail.FolioDetailFragment"
+        android:label="@string/title_folio_detail"
+        tools:layout="@layout/activity_folio_detail"/>
 </navigation>

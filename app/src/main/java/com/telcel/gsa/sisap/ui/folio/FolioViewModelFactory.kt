@@ -1,4 +1,4 @@
-package com.telcel.gsa.sisap.ui.solicitudes
+package com.telcel.gsa.sisap.ui.folio
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

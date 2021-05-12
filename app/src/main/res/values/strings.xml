@@ -2,4 +2,5 @@
     <string name="app_name">SISAP Móvil</string>
     <string name="title_solicitudes">Solicitudes</string>
     <string name="title_incidencias">Incidencias</string>
+    <string name="title_folio_detail">Detalle de Folio</string>
 </resources>

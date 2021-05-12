@@ -1,4 +1,4 @@
-package com.telcel.gsa.sisap.ui.solicitudes
+package com.telcel.gsa.sisap.ui.folio
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.telcel.gsa.sisap.databinding.FolioItemBinding
 import com.telcel.gsa.sisap.ui.network.Folio
 
-class FoliosAdapter: ListAdapter<Folio,FoliosAdapter.FoliosListViewHolder>(DiffCallback) {
+class FoliosAdapter(val clickListener: FolioListener): ListAdapter<Folio,FoliosAdapter.FoliosListViewHolder>(DiffCallback) {
 
     class FoliosListViewHolder(private var binding : FolioItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(folio: Folio){
+        fun bind(clickListener: FolioListener, folio: Folio){
             binding.folio = folio
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
     }
@@ -34,6 +35,11 @@ class FoliosAdapter: ListAdapter<Folio,FoliosAdapter.FoliosListViewHolder>(DiffC
 
     override fun onBindViewHolder(holder: FoliosListViewHolder, position: Int) {
         val folio = getItem(position)
-        holder.bind(folio)
+        holder.bind(clickListener, folio)
     }
+
+    class FolioListener(val clickListener: (idFolio: Int) -> Unit){
+        fun onClick(folio: Folio) = clickListener(folio.idFolio)
+    }
+
 }

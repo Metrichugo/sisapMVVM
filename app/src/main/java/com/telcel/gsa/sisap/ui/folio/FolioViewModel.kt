@@ -1,4 +1,4 @@
-package com.telcel.gsa.sisap.ui.solicitudes
+package com.telcel.gsa.sisap.ui.folio
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,17 +16,47 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
     val folios : LiveData<FoliosList>
     get() = _folios
 
+    private val _navigateToFolioDetail = MutableLiveData<Int?>()
+    val navigateToFolioDetail
+    get() = _navigateToFolioDetail
+
+    private val _filterStatus = MutableLiveData<List<String>>()
+    val filterStatus
+    get() = _filterStatus
+
     init {
         getFolios()
     }
+
+    fun onFolioClicked(id: Int){
+        _navigateToFolioDetail.value = id
+    }
+
+    fun onFolioNavigated(){
+        _navigateToFolioDetail.value = null
+    }
+
+
 
     private fun getFolios() {
         viewModelScope.launch {
             try {
                 _folios.value = SisapApi.retrofitService.getFolios(FoliosRequest(idEmployee))
+                getStatusFilters()
             }catch (e:Exception){
                 _folios.value = FoliosList(ArrayList())
             }
         }
+    }
+
+    private fun getStatusFilters(){
+        val statusArray = ArrayList<String>()
+        var distinctFolios = _folios.value?.foliosList?.distinctBy {
+            folio -> folio.status
+          }
+        distinctFolios?.forEach {
+            statusArray.add(it.status)
+        }
+         _filterStatus.value = statusArray
     }
 }
