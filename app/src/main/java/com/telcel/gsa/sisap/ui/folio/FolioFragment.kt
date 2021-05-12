@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,15 +17,19 @@ import com.telcel.gsa.sisap.ui.foliodetail.FolioDetail
 
 class FolioFragment : Fragment() {
 
+    lateinit var folioViewModel: FolioViewModel
+    lateinit var adapter: FoliosAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentFolioBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val folioViewModelFactory = FolioViewModelFactory("18858")
-        val folioViewModel = ViewModelProvider(this,folioViewModelFactory).get(FolioViewModel::class.java)
+        folioViewModel = ViewModelProvider(this,folioViewModelFactory).get(FolioViewModel::class.java)
         binding.viewModel = folioViewModel
-        binding.incidentsList.adapter = FoliosAdapter(FoliosAdapter.FolioListener {
+        adapter = FoliosAdapter(FoliosAdapter.FolioListener {
             idFolio -> folioViewModel.onFolioClicked(idFolio)
         })
+        binding.incidentsList.adapter = adapter
         folioViewModel.navigateToFolioDetail.observe(viewLifecycleOwner, Observer {  folio ->
             folio?.let {
                 doNavigationIntent(folio)
@@ -47,7 +50,7 @@ class FolioFragment : Fragment() {
     }
 
     private fun createChipsFilters(binding: FragmentFolioBinding, statusFilterList:List<String>?){
-        statusFilterList?.forEach {
+        statusFilterList?.forEach { it ->
             val chip = Chip(context)
             chip.isCheckable = true
             chip.text = it
@@ -55,7 +58,10 @@ class FolioFragment : Fragment() {
             chip.setTextColor(requireContext().getColor(R.color.color_on_primary))
             chip.checkedIconTint = ColorStateList.valueOf(requireContext().getColor(R.color.color_secondary_variant))
             chip.setOnCheckedChangeListener{ compoundButton: CompoundButton, b: Boolean ->
-                Toast.makeText(context,"Clicked: ${chip.text}",Toast.LENGTH_LONG).show()
+                folioViewModel.onChipClicked(chip.text.toString())
+                folioViewModel.filters.observe(viewLifecycleOwner, Observer { status->
+                    adapter.applyFilters(status,folioViewModel.folios.value)
+                })
                 if(b){
                     chip.setTextColor(requireContext().getColor(R.color.color_secondary_variant))
                 }else{

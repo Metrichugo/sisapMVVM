@@ -7,8 +7,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.telcel.gsa.sisap.databinding.FolioItemBinding
 import com.telcel.gsa.sisap.ui.network.Folio
+import com.telcel.gsa.sisap.ui.network.FoliosList
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FoliosAdapter(val clickListener: FolioListener): ListAdapter<Folio,FoliosAdapter.FoliosListViewHolder>(DiffCallback) {
+
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
 
     class FoliosListViewHolder(private var binding : FolioItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(clickListener: FolioListener, folio: Folio){
@@ -36,6 +43,21 @@ class FoliosAdapter(val clickListener: FolioListener): ListAdapter<Folio,FoliosA
     override fun onBindViewHolder(holder: FoliosListViewHolder, position: Int) {
         val folio = getItem(position)
         holder.bind(clickListener, folio)
+    }
+
+    fun applyFilters(filters: ArrayList<String>, value: FoliosList?){
+        adapterScope.launch {
+            val filteredFolios = value?.foliosList?.filter{
+                filters.contains(it.status)
+            }
+            withContext(Dispatchers.Main){
+                if(filteredFolios.isNullOrEmpty()){
+                    submitList(value?.foliosList)
+                }else{
+                    submitList(filteredFolios)
+                }
+            }
+        }
     }
 
     class FolioListener(val clickListener: (idFolio: Int) -> Unit){

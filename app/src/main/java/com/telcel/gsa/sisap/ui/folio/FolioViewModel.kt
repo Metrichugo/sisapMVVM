@@ -17,12 +17,16 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
     get() = _folios
 
     private val _navigateToFolioDetail = MutableLiveData<Int?>()
-    val navigateToFolioDetail
+    val navigateToFolioDetail: LiveData<Int?>
     get() = _navigateToFolioDetail
 
     private val _filterStatus = MutableLiveData<List<String>>()
-    val filterStatus
+    val filterStatus : LiveData<List<String>>
     get() = _filterStatus
+
+    private val _filters = MutableLiveData<ArrayList<String>>()
+    val filters : LiveData<ArrayList<String>>
+    get() = _filters
 
     init {
         getFolios()
@@ -34,6 +38,16 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
 
     fun onFolioNavigated(){
         _navigateToFolioDetail.value = null
+    }
+
+    fun onChipClicked( status : String){
+        if(filters.value.isNullOrEmpty()){
+            _filters.value = arrayListOf(status)
+        }else{
+            _filters.value?.let {
+                if (it.contains(status)) it.remove(status) else _filters.value?.add(status)
+            }
+        }
     }
 
 
