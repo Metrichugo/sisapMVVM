@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="employee"
+            type="com.telcel.gsa.sisap.ui.network.Employee" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/id_employee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@{employee.idEmployee}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/employee_name"
+            app:layout_constraintBottom_toBottomOf="@id/employee_name"
+            tools:text="EX431918"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/employee_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="@{employee.employeeName + ' ' + employee.employeeLastName + ' ' + employee.employeeSecondLastName }"
+            app:layout_constraintTop_toTopOf="@id/id_employee"
+            app:layout_constraintStart_toEndOf="@id/id_employee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Víctor Hugo Cardenas Castillo"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

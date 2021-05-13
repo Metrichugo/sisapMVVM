@@ -35,7 +35,7 @@ class FolioDetail : FragmentActivity() {
             TabLayoutMediator(binding.tabLayout,binding.pager){ tab,position ->
                 when(position){
                     0 -> tab.text = "DETALLE"
-                    else -> tab.text = "DETALLE"
+                    else -> tab.text = "EQUIPO DE TRABAJO"
                 }
             }.attach()
         })

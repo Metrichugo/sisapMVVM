@@ -16,11 +16,10 @@ import com.telcel.gsa.sisap.ui.network.FolioDetail
 class DescriptionFragment : Fragment() {
 
     lateinit var descriptionViewModel: DescriptionViewModel
-    lateinit var folioDetail: FolioDetail
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentDescriptionBinding.inflate(inflater)
-        folioDetail = arguments?.getParcelable<FolioDetail>("detail_folio_parcel")!!
+        val folioDetail = arguments?.getParcelable<FolioDetail>("detail_folio_parcel")!!
         val descriptionViewModelFactory = DescriptionViewModelFactory(folioDetail)
         descriptionViewModel = ViewModelProvider(this,descriptionViewModelFactory).get(DescriptionViewModel::class.java)
         binding.viewModel = descriptionViewModel

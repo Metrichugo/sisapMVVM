@@ -7,13 +7,14 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.telcel.gsa.sisap.R
 import com.telcel.gsa.sisap.ui.description.DescriptionFragment
 import com.telcel.gsa.sisap.ui.network.FolioDetail
+import com.telcel.gsa.sisap.ui.workteam.WorkTeamFragment
 
 class FolioDetailPagerAdapter(private val fragmentActivity: FragmentActivity,private val folioDetail: FolioDetail?) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
         return 2
     }
     override fun createFragment(position: Int): Fragment {
-        when(position){
+         when(position){
             0-> {
                 val descriptionFragment = DescriptionFragment()
                 descriptionFragment.arguments = Bundle().apply {
@@ -22,11 +23,11 @@ class FolioDetailPagerAdapter(private val fragmentActivity: FragmentActivity,pri
                 return descriptionFragment
             }
             else->{
-                val descriptionFragment = DescriptionFragment()
-                descriptionFragment.arguments = Bundle().apply {
-                    putParcelable("detail_folio_parcel",folioDetail)
+                val workTeamFragment = WorkTeamFragment()
+                workTeamFragment.arguments = Bundle().apply {
+                    putParcelable(fragmentActivity.applicationContext.getString(R.string.detail_folio_parcel),folioDetail)
                 }
-                return descriptionFragment
+                return workTeamFragment
             }
         }
     }
