@@ -3,4 +3,16 @@
     <string name="title_solicitudes">Solicitudes</string>
     <string name="title_incidencias">Incidencias</string>
     <string name="title_folio_detail">Detalle de Folio</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_tag">Titulo:</string>
+    <string name="system_tag">Sistema:</string>
+    <string name="description_tag">Descripción:</string>
+    <string name="status_tag">Estatus:</string>
+    <string name="category_tag">Categoria:</string>
+    <string name="priority_tag">Prioridad:</string>
+    <string name="sox_tag">Sox:</string>
+    <string name="id_folio_extra">ID_FOLIO_EXTRA</string>
+    <string name="id_employee_extra">ID_EMPLOYEE_EXTRA</string>
+    <string name="detail_folio_parcel">detail_folio_parcel</string>
 </resources>

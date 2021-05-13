@@ -19,11 +19,12 @@ class FolioFragment : Fragment() {
 
     lateinit var folioViewModel: FolioViewModel
     lateinit var adapter: FoliosAdapter
+    val idEmployee : String = "18858"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentFolioBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        val folioViewModelFactory = FolioViewModelFactory("18858")
+        val folioViewModelFactory = FolioViewModelFactory(idEmployee)
         folioViewModel = ViewModelProvider(this,folioViewModelFactory).get(FolioViewModel::class.java)
         binding.viewModel = folioViewModel
         adapter = FoliosAdapter(FoliosAdapter.FolioListener {
@@ -45,7 +46,8 @@ class FolioFragment : Fragment() {
 
     private fun doNavigationIntent(idFolio : Int ){
         val detailFragmentIntent = Intent(context,FolioDetail::class.java)
-        detailFragmentIntent.putExtra("ID_FOLIO_EXTRA",idFolio)
+        detailFragmentIntent.putExtra(getString(R.string.id_folio_extra),idFolio)
+        detailFragmentIntent.putExtra(getString(R.string.id_employee_extra),idEmployee)
         startActivity(detailFragmentIntent)
     }
 

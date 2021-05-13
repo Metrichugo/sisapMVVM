@@ -31,4 +31,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!--Inline Tilte Style -->
+    <style name="TextAppearance.TitleInline" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

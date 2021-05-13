@@ -26,6 +26,11 @@ interface SisapApiService {
         "messageUUID: 356904090414635")
     @POST("rpa/pendingAction")
     suspend fun getFolios(@Body foliosRequest: FoliosRequest) : FoliosList
+
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("cdf/detailsFolioc")
+    suspend fun getDetailFolio(@Body folioDetailRequest: FolioDetailRequest) : FolioDetail
 }
 
 object SisapApi {
