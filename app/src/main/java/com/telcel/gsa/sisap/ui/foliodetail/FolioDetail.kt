@@ -30,12 +30,14 @@ class FolioDetail : FragmentActivity() {
         folioDetailViewModel = ViewModelProvider(this,folioDetailViewModelFactory).get(FolioDetailViewModel::class.java)
         binding.viewModel = folioDetailViewModel
         folioDetailViewModel.detailFolio.observe(this, Observer {
-            pagerAdapter = FolioDetailPagerAdapter(this,it)
+            pagerAdapter = FolioDetailPagerAdapter(this,it,idEmployee)
             binding.pager.adapter = pagerAdapter
             TabLayoutMediator(binding.tabLayout,binding.pager){ tab,position ->
                 when(position){
-                    0 -> tab.text = "DETALLE"
-                    else -> tab.text = "EQUIPO DE TRABAJO"
+                    0 -> tab.text = getString(R.string.detail_tab_title)
+                    1 -> tab.text = getString(R.string.work_team_tab_title)
+                    2 -> tab.text = getString(R.string.documents_tab_title)
+                    else-> tab.text = getString(R.string.coments_tab_title)
                 }
             }.attach()
         })

@@ -31,6 +31,11 @@ interface SisapApiService {
         "messageUUID: 356904090414635")
     @POST("cdf/detailsFolioc")
     suspend fun getDetailFolio(@Body folioDetailRequest: FolioDetailRequest) : FolioDetail
+
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("gdf/documentFolio")
+    suspend fun getDocumentsFolio(@Body documentsFolioRequest: DocumentsFolioRequest) : DocumentList
 }
 
 object SisapApi {

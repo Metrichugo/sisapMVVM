@@ -15,4 +15,9 @@
     <string name="id_folio_extra">ID_FOLIO_EXTRA</string>
     <string name="id_employee_extra">ID_EMPLOYEE_EXTRA</string>
     <string name="detail_folio_parcel">detail_folio_parcel</string>
+    <string name="detail_tab_title">DETALLE</string>
+    <string name="work_team_tab_title">EQUIPO DE TRABAJO</string>
+    <string name="documents_tab_title">DOCUMENTOS</string>
+    <string name="coments_tab_title">COMENTARIOS</string>
+    <string name="uploaded_date">Última actualización: %s</string>
 </resources>

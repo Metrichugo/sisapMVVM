@@ -18,12 +18,4 @@ class DescriptionViewModel(private val detail: FolioDetail) : ViewModel() {
         _folioDetail.value = detail
     }
 
-    val complexityString = Transformations.map(folioDetail){
-        folioDetail-> parseComplexity(folioDetail)
-    }
-
-    val priorityString = Transformations.map(folioDetail){
-        folioDetail -> parsePriority(folioDetail)
-    }
-
 }
