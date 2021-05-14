@@ -30,10 +30,19 @@
         <item name="textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="TextAppearance.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+    </style>
+    <style name="TextAppearance.Body" parent="TextAppearance.AppCompat.Body1">
+    </style>
 
     <!--Inline Tilte Style -->
     <style name="TextAppearance.TitleInline" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/color_on_primary</item>
     </style>
 
 </resources>

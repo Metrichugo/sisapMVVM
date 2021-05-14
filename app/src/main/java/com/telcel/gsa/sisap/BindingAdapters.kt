@@ -42,6 +42,11 @@ fun bindRecyclerViewDocumentsFolio(recyclerView: RecyclerView,data: List<Documen
     }
 }
 
+@BindingAdapter("fullName")
+fun MaterialTextView.bindTextViewFullName(employee: Employee){
+    text = this.context.getString(R.string.full_name_formated,employee.employeeName,employee.employeeLastName,employee.employeeSecondLastName)
+}
+
 @BindingAdapter("complexityString")
 fun MaterialTextView.bindTextViewComplexity(folioDetail: FolioDetail){
     text = parseComplexity(folioDetail)

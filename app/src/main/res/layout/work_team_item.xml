@@ -22,18 +22,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/employee_name"
             app:layout_constraintBottom_toBottomOf="@id/employee_name"
-            tools:text="EX431918"/>
+            tools:text="EX431918"
+            style="@style/TextAppearance.TitleInline"/>
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/employee_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:text="@{employee.employeeName + ' ' + employee.employeeLastName + ' ' + employee.employeeSecondLastName }"
+            app:fullName="@{employee}"
             app:layout_constraintTop_toTopOf="@id/id_employee"
             app:layout_constraintStart_toEndOf="@id/id_employee"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Víctor Hugo Cardenas Castillo"/>
+            tools:text="Víctor Hugo Cardenas Castillo"
+            style="@style/TextAppearance.TitleInline"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

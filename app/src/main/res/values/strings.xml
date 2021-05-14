@@ -20,4 +20,6 @@
     <string name="documents_tab_title">DOCUMENTOS</string>
     <string name="coments_tab_title">COMENTARIOS</string>
     <string name="uploaded_date">Última actualización: %s</string>
+    <string name="full_name_formated">%s %s %s</string>
+    <string name="status_title_formated">Estatus: %s</string>
 </resources>

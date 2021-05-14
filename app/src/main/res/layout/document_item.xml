@@ -25,7 +25,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/download_file"
-            tools:text="SDS_AI_2021-876417_VR.doc"/>
+            tools:text="SDS_AI_2021-876417_VR.doc"
+            style="@style/TextAppearance.TitleInline"/>
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/document_type"
             android:layout_width="0dp"
@@ -35,19 +36,21 @@
             app:layout_constraintTop_toBottomOf="@+id/document_name"
             app:layout_constraintStart_toStartOf="@+id/document_name"
             app:layout_constraintEnd_toEndOf="@id/document_name"
-            tools:text="ANALISIS DE IMPACTO (SDS)"/>
+            tools:text="ANALISIS DE IMPACTO (SDS)"
+            style="@style/TextAppearance.Subtitle"/>
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/upload_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/medium_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             app:uploadedDate="@{document.uploadDate}"
             app:layout_constraintTop_toBottomOf="@+id/document_type"
             app:layout_constraintStart_toStartOf="@+id/document_type"
             app:layout_constraintEnd_toEndOf="@+id/document_type"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Última actualización: 2021/03/29 18:14:36"/>
+            tools:text="Última actualización: 2021/03/29 18:14:36"
+            style="@style/TextAppearance.Body"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/download_file"
             android:layout_width="60dp"
@@ -56,7 +59,8 @@
             app:layout_constraintTop_toBottomOf="@+id/document_name"
             app:layout_constraintBottom_toBottomOf="@+id/document_type"
             app:layout_constraintEnd_toEndOf="parent"
-            app:icon="@drawable/abc_vector_test"/>
+            app:icon="@drawable/abc_vector_test"
+            style="@style/Button.Outlined"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
