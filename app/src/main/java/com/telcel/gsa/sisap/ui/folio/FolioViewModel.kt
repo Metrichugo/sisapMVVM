@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.telcel.gsa.sisap.LoadingStatus
 import com.telcel.gsa.sisap.ui.network.FoliosList
 import com.telcel.gsa.sisap.ui.network.FoliosRequest
 import com.telcel.gsa.sisap.ui.network.SisapApi
@@ -11,6 +12,10 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class FolioViewModel(private val idEmployee: String) : ViewModel() {
+
+    private val _status = MutableLiveData<LoadingStatus>()
+    val status : LiveData<LoadingStatus>
+    get() = _status
 
     private val _folios = MutableLiveData<FoliosList>()
     val folios : LiveData<FoliosList>
@@ -54,10 +59,13 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
 
     private fun getFolios() {
         viewModelScope.launch {
+            _status.value = LoadingStatus.LOADING
             try {
                 _folios.value = SisapApi.retrofitService.getFolios(FoliosRequest(idEmployee))
                 getStatusFilters()
+                _status.value = LoadingStatus.DONE
             }catch (e:Exception){
+                _status.value = LoadingStatus.ERROR
                 _folios.value = FoliosList(ArrayList())
             }
         }

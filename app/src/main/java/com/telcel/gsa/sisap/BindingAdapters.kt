@@ -1,7 +1,9 @@
 package com.telcel.gsa.sisap
 
+import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.textview.MaterialTextView
 import com.telcel.gsa.sisap.ui.description.DescriptionViewModel
 import com.telcel.gsa.sisap.ui.documents.FolioDocumentsAdapter
@@ -60,4 +62,21 @@ fun MaterialTextView.bindTextViewPriority(folioDetail: FolioDetail){
 @BindingAdapter("uploadedDate")
 fun MaterialTextView.bindTextViewUploadedDate(uploadDate : String){
     text = this.context.getString(R.string.uploaded_date,uploadDate)
+}
+
+@BindingAdapter("dataLoading")
+fun bindStatus(loadingAnimation : LottieAnimationView , status : LoadingStatus){
+    when(status){
+        LoadingStatus.LOADING ->{
+            loadingAnimation.visibility = View.VISIBLE
+            loadingAnimation.setAnimation("loading.json")
+        }
+        LoadingStatus.ERROR ->{
+            loadingAnimation.visibility = View.VISIBLE
+            loadingAnimation.setAnimation("error.json")
+        }
+        LoadingStatus.DONE->{
+            loadingAnimation.visibility = View.GONE
+        }
+    }
 }
