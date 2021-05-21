@@ -5,6 +5,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.textview.MaterialTextView
+import com.telcel.gsa.sisap.ui.committee.CommitteeAdapter
 import com.telcel.gsa.sisap.ui.description.DescriptionViewModel
 import com.telcel.gsa.sisap.ui.documents.FolioDocumentsAdapter
 import com.telcel.gsa.sisap.ui.incidents.IncidentsAdapter
@@ -40,6 +41,14 @@ fun bindRecyclerViewWorkTeam(recyclerView: RecyclerView, data : List<Employee>?)
 fun bindRecyclerViewDocumentsFolio(recyclerView: RecyclerView,data: List<Document>?){
     data?.let{
         val adapter = recyclerView.adapter as FolioDocumentsAdapter
+        adapter.submitList(data)
+    }
+}
+
+@BindingAdapter("committeeMembersListData")
+fun bindRecyclerViewCommitteeMembers(recyclerView: RecyclerView,data: List<CommitteeMember>?){
+    data?.let {
+        val adapter = recyclerView.adapter as CommitteeAdapter
         adapter.submitList(data)
     }
 }

@@ -3,6 +3,7 @@ package com.telcel.gsa.sisap.ui.network
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
@@ -36,6 +37,12 @@ interface SisapApiService {
         "messageUUID: 356904090414635")
     @POST("gdf/documentFolio")
     suspend fun getDocumentsFolio(@Body documentsFolioRequest: DocumentsFolioRequest) : DocumentList
+
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("mcf/membersCommitte")
+    suspend fun getCommitteeMembers(@Body committeeRequest: CommitteeRequest): CommitteeMembersList
+
 }
 
 object SisapApi {

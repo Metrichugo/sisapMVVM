@@ -36,8 +36,8 @@ class FolioDetail : FragmentActivity() {
                 when(position){
                     0 -> tab.text = getString(R.string.detail_tab_title)
                     1 -> tab.text = getString(R.string.work_team_tab_title)
-                    2 -> tab.text = getString(R.string.documents_tab_title)
-                    else-> tab.text = getString(R.string.coments_tab_title)
+                    2 -> tab.text = getString(R.string.committee_members_tab_tilte)
+                    else-> tab.text = getString(R.string.documents_tab_title)
                 }
             }.attach()
         })
