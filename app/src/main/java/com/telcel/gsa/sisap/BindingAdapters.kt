@@ -4,6 +4,7 @@ import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textview.MaterialTextView
 import com.telcel.gsa.sisap.ui.committee.CommitteeAdapter
 import com.telcel.gsa.sisap.ui.description.DescriptionViewModel
@@ -80,6 +81,29 @@ fun MaterialTextView.bindTextViewPriority(folioDetail: FolioDetail){
 @BindingAdapter("uploadedDate")
 fun MaterialTextView.bindTextViewUploadedDate(uploadDate : String){
     text = this.context.getString(R.string.uploaded_date,uploadDate)
+}
+
+@BindingAdapter("currentStatus")
+fun MaterialTextView.bindTextViewCurrentStatus(status : String?){
+    status?.let {
+        text = this.context.getString(R.string.status_title_formated,status)
+    }
+}
+
+@BindingAdapter("hasPendingAction")
+fun MaterialButton.bindHasPendingAction( flowControl: FlowControl?){
+    flowControl?.let {
+        if(flowControl.idFlowControl != 0){
+            visibility = View.VISIBLE
+            when(flowControl.description){
+                "CTRL_CLASIF_FOLIO" -> text = this.context.getString(R.string.classification_tag)
+                "CTRL_ASIGNAR_FOLIO" -> text = this.context.getString(R.string.assignment_tag)
+                "CTRL_AUTORIZAR_FOLIO" -> text = this.context.getString(R.string.authorization_tag)
+                "CTRL_CATEGORIZACION" -> text = this.context.getString(R.string.categorization_tag)
+                "CTRL_ENCUESTA_FOLIO" -> text = this.context.getString(R.string.survey_tag)
+            }
+        }
+    }
 }
 
 @BindingAdapter("dataLoading")

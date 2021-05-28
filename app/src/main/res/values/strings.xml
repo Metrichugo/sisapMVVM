@@ -29,4 +29,9 @@
     <string name="modification_user_title">Usuario modificación:</string>
     <string name="comment_title">Comentario:</string>
     <string name="historical_tab_title">HISTÓRICO</string>
+    <string name="classification_tag">CLASIFICACIÓN</string>
+    <string name="assignment_tag">ASIGNACIÓN</string>
+    <string name="authorization_tag">AUTORIZACIÓN</string>
+    <string name="categorization_tag">CATEGORIZACIÓN</string>
+    <string name="survey_tag">ENCUESTA DE SERVICIO</string>
 </resources>

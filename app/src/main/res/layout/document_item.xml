@@ -59,7 +59,7 @@
             app:layout_constraintTop_toBottomOf="@+id/document_name"
             app:layout_constraintBottom_toBottomOf="@+id/document_type"
             app:layout_constraintEnd_toEndOf="parent"
-            app:icon="@drawable/abc_vector_test"
+            app:icon="@drawable/ic_arrow_downward"
             style="@style/Button.Outlined"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

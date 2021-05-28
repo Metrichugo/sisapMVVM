@@ -24,4 +24,4 @@ fun parsePriority(folioDetail: FolioDetail) : String{
     }
 }
 
-public enum class LoadingStatus { LOADING, ERROR, DONE}
+enum class LoadingStatus { LOADING, ERROR, DONE}
