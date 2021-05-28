@@ -23,4 +23,10 @@
     <string name="uploaded_date">Última actualización: %s</string>
     <string name="full_name_formated">%s %s %s</string>
     <string name="status_title_formated">Estatus: %s</string>
+    <string name="assignment_date_title">Fecha Asignación:</string>
+    <string name="deadline_title">Fecha Cierre:</string>
+    <string name="days_passed_title">Días transcurridos:</string>
+    <string name="modification_user_title">Usuario modificación:</string>
+    <string name="comment_title">Comentario:</string>
+    <string name="historical_tab_title">HISTÓRICO</string>
 </resources>

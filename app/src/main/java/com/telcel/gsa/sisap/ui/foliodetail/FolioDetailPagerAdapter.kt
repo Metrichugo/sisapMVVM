@@ -8,12 +8,13 @@ import com.telcel.gsa.sisap.R
 import com.telcel.gsa.sisap.ui.committee.CommitteeFragment
 import com.telcel.gsa.sisap.ui.description.DescriptionFragment
 import com.telcel.gsa.sisap.ui.documents.FolioDocumentsFragment
+import com.telcel.gsa.sisap.ui.historical.HistoricalFragment
 import com.telcel.gsa.sisap.ui.network.FolioDetail
 import com.telcel.gsa.sisap.ui.workteam.WorkTeamFragment
 
 class FolioDetailPagerAdapter(private val fragmentActivity: FragmentActivity,private val folioDetail: FolioDetail?, private val idEmployee: String) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
-        return 4
+        return 5
     }
     override fun createFragment(position: Int): Fragment {
          when(position){
@@ -37,6 +38,13 @@ class FolioDetailPagerAdapter(private val fragmentActivity: FragmentActivity,pri
                      putInt(fragmentActivity.applicationContext.getString(R.string.id_folio_extra),folioDetail!!.idFolio)
                  }
                  return committeeFragment
+             }
+             3->{
+                 val historicalFragment = HistoricalFragment()
+                 historicalFragment.arguments = Bundle().apply {
+                     putInt(fragmentActivity.applicationContext.getString(R.string.id_folio_extra),folioDetail!!.idFolio)
+                 }
+                 return historicalFragment
              }
              else->{
                  val folioDocumentsFragment = FolioDocumentsFragment()

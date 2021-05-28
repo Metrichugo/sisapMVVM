@@ -10,6 +10,7 @@ import com.telcel.gsa.sisap.ui.description.DescriptionViewModel
 import com.telcel.gsa.sisap.ui.documents.FolioDocumentsAdapter
 import com.telcel.gsa.sisap.ui.incidents.IncidentsAdapter
 import com.telcel.gsa.sisap.ui.folio.FoliosAdapter
+import com.telcel.gsa.sisap.ui.historical.HistoricalAdapter
 import com.telcel.gsa.sisap.ui.network.*
 import com.telcel.gsa.sisap.ui.workteam.WorkTeamAdapter
 
@@ -49,6 +50,14 @@ fun bindRecyclerViewDocumentsFolio(recyclerView: RecyclerView,data: List<Documen
 fun bindRecyclerViewCommitteeMembers(recyclerView: RecyclerView,data: List<CommitteeMember>?){
     data?.let {
         val adapter = recyclerView.adapter as CommitteeAdapter
+        adapter.submitList(data)
+    }
+}
+
+@BindingAdapter("historicalListData")
+fun bindRecyclerViewHistorical(recyclerView: RecyclerView,data: List<ActionHistorical>?){
+    data?.let {
+        val adapter = recyclerView.adapter as HistoricalAdapter
         adapter.submitList(data)
     }
 }

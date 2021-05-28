@@ -43,6 +43,11 @@ interface SisapApiService {
     @POST("mcf/membersCommitte")
     suspend fun getCommitteeMembers(@Body committeeRequest: CommitteeRequest): CommitteeMembersList
 
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("map/membersActionPending")
+    suspend fun getHistoricalFolio(@Body historicalFolioRequest: HistoricalFolioRequest): HistoricalFolio
+
 }
 
 object SisapApi {

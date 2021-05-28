@@ -45,7 +45,7 @@ data class FolioDetail(
     @Json(name="asignado") val isAssigned : Boolean,
     @Json(name="sox") val sox : String,
     @Json(name="titulo") val title : String,
-    @Json(name="controlFlujo") val flowControl: FlowControl,
+    @Json(name="controlFlujo") val flowControl: FlowControl?,
     @Json(name="estimatedTime") val estimatedTime : Int,
     @Json(name="involucradoSolicitudTOs") val involvedEmployees : List<Employee>
 ) : Parcelable
