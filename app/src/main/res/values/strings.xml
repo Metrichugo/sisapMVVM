@@ -34,4 +34,15 @@
     <string name="authorization_tag">AUTORIZACIÓN</string>
     <string name="categorization_tag">CATEGORIZACIÓN</string>
     <string name="survey_tag">ENCUESTA DE SERVICIO</string>
+    <string name="classify_folio_button">CLASIFICAR FOLIO</string>
+    <string name="system_title">Sistema</string>
+    <string name="module_title">Módulo</string>
+    <string name="complexity_title">Complejidad</string>
+    <string name="type_title">Tipo</string>
+    <string name="priority_title">Prioridad</string>
+    <string name="boss_title">Jefe</string>
+    <string name="no_value_selected">N/A</string>
+    <string name="accept_button">ACEPTAR</string>
+    <string name="cancel_button">CANCELAR</string>
+    <string name="date_title">Fecha</string>
 </resources>

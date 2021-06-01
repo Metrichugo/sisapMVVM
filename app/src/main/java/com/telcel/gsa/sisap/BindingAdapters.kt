@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textview.MaterialTextView
+import com.telcel.gsa.sisap.ui.classification.ClassificationViewModel
 import com.telcel.gsa.sisap.ui.committee.CommitteeAdapter
 import com.telcel.gsa.sisap.ui.description.DescriptionViewModel
 import com.telcel.gsa.sisap.ui.documents.FolioDocumentsAdapter
@@ -104,6 +105,25 @@ fun MaterialButton.bindHasPendingAction( flowControl: FlowControl?){
             }
         }
     }
+}
+
+@BindingAdapter("showDateInput")
+fun View.bindDateInput(priority: MPriority?){
+    priority?.let {
+        visibility = when(priority.idPriority){
+            5-> View.VISIBLE
+            else -> View.GONE
+        }
+    }
+
+    if(priority == null){
+        visibility = View.GONE
+    }
+}
+
+@BindingAdapter("sendClassification")
+fun MaterialButton.bindSendClassification(enabled : Boolean){
+    isEnabled = enabled
 }
 
 @BindingAdapter("dataLoading")

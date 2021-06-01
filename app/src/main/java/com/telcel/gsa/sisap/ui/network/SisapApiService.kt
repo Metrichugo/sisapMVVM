@@ -48,6 +48,26 @@ interface SisapApiService {
     @POST("map/membersActionPending")
     suspend fun getHistoricalFolio(@Body historicalFolioRequest: HistoricalFolioRequest): HistoricalFolio
 
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("umc/userModulesCatalogPriority")
+    suspend fun getCatalogs(@Body catalogRequest: CatalogRequest): Catalog
+
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("cce/chiefEmployee")
+    suspend fun getBosses(@Body bossesListRequest: BossesListRequest): BossesList
+
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("smc/sysModulesCatalog")
+    suspend fun getModules(@Body modulesRequest: ModulesRequest): ModulesList
+
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("cf/classifyFolio")
+    suspend fun postClassification(@Body classificationRequest: ClassificationRequest): GenericPostAppResponse
+
 }
 
 object SisapApi {

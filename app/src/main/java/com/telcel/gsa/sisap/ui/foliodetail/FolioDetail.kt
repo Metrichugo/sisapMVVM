@@ -1,6 +1,8 @@
 package com.telcel.gsa.sisap.ui.foliodetail
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
@@ -9,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.telcel.gsa.sisap.R
 import com.telcel.gsa.sisap.databinding.ActivityFolioDetailBinding
+import com.telcel.gsa.sisap.ui.classification.ClassificationActivity
 
 class FolioDetail : FragmentActivity() {
 
@@ -41,6 +44,18 @@ class FolioDetail : FragmentActivity() {
                     else-> tab.text = getString(R.string.documents_tab_title)
                 }
             }.attach()
+            binding.actionButton.setOnClickListener { view: View ->
+                it?.flowControl?.let { flowControl ->
+                    when(flowControl.idFlowControl){
+                        1-> {
+                            val classificationActivity = Intent(applicationContext,ClassificationActivity::class.java)
+                            classificationActivity.putExtra(getString(R.string.id_employee_extra),idEmployee)
+                            classificationActivity.putExtra(getString(R.string.id_folio_extra),idFolio)
+                            startActivity(classificationActivity)
+                        }
+                    }
+                }
+            }
         })
     }
 }

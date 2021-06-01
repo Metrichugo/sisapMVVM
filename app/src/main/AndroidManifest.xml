@@ -25,6 +25,10 @@
             android:name=".ui.foliodetail.FolioDetail"
             android:label="Detalle de Folio">
         </activity>
+
+        <activity
+            android:name=".ui.classification.ClassificationActivity"
+            android:label="Clasificar de Folio"/>
     </application>
 
 </manifest>
