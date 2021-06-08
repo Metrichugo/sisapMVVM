@@ -19,6 +19,7 @@ class FolioDetail : FragmentActivity() {
     lateinit var idFolio : String
     lateinit var idEmployee : String
     lateinit var pagerAdapter: FolioDetailPagerAdapter
+    val classificationRequestCode : Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,11 +52,20 @@ class FolioDetail : FragmentActivity() {
                             val classificationActivity = Intent(applicationContext,ClassificationActivity::class.java)
                             classificationActivity.putExtra(getString(R.string.id_employee_extra),idEmployee)
                             classificationActivity.putExtra(getString(R.string.id_folio_extra),idFolio)
-                            startActivity(classificationActivity)
+                            startActivityForResult(classificationActivity,classificationRequestCode)
                         }
                     }
                 }
             }
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == classificationRequestCode){
+            if(resultCode == RESULT_OK){
+                finish()
+            }
+        }
     }
 }

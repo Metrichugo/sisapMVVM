@@ -29,7 +29,7 @@ class ClassificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val bundle = intent.extras
         bundle?.let {
-            idFolio = bundle.getInt(getString(R.string.id_folio_extra),0).toString()
+            idFolio = bundle.getString(getString(R.string.id_folio_extra),"")
             idEmployee = bundle.getString(getString(R.string.id_employee_extra),"")
         }
         val binding = DataBindingUtil.setContentView<ActivityClassificationBinding>(this, R.layout.activity_classification)
@@ -144,6 +144,7 @@ class ClassificationActivity : AppCompatActivity() {
         }
 
         classificationViewModel.classificationAction.observe(this,{
+            setResult(RESULT_OK)
             finish()
         })
     }

@@ -1,11 +1,15 @@
 package com.telcel.gsa.sisap.ui.classification
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.telcel.gsa.sisap.ui.network.*
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
@@ -189,8 +193,16 @@ class ClassificationViewModel(private val idEmployee: String, private val idFoli
     private fun parseDate(date : Long) : String{
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         calendar.time = Date(date)
-        return calendar.get(Calendar.DAY_OF_MONTH).toString().plus("/").
-        plus(calendar.get(Calendar.MONTH).plus(1).toString()).plus("/").
-        plus(calendar.get(Calendar.YEAR).toString())
+        return twoDigits(calendar.get(Calendar.DAY_OF_MONTH)).plus("/").
+        plus(twoDigits(calendar.get(Calendar.MONTH).plus(1))).plus("/").
+        plus(calendar.get(Calendar.YEAR).toString()).
+        plus(" 00:00:00")
+    }
+
+    private fun twoDigits(value: Int) : String{
+        return when(value){
+            in 1..9 -> "0".plus(value)
+            else -> value.toString()
+        }
     }
 }
