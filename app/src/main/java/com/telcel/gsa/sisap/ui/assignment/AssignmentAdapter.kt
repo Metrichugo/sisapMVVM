@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.telcel.gsa.sisap.databinding.TeamMemberItemBinding
 import com.telcel.gsa.sisap.ui.network.TeamMember
 
-class AssignmentAdapter(/*val clickListener: MemberTeamListener*/) : ListAdapter<TeamMember, AssignmentAdapter.TeamMemberViewHolder>(DiffCallback) {
+class AssignmentAdapter(val clickListener: MemberTeamListener) : ListAdapter<TeamMember, AssignmentAdapter.TeamMemberViewHolder>(DiffCallback) {
 
     class TeamMemberViewHolder(private var binding : TeamMemberItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(/*clickListener: MemberTeamListener,*/ member: TeamMember){
+        fun bind(clickListener: MemberTeamListener, member: TeamMember){
             binding.member = member
-            //binding.clickListener = clickListener
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
     }
@@ -35,7 +35,7 @@ class AssignmentAdapter(/*val clickListener: MemberTeamListener*/) : ListAdapter
 
     override fun onBindViewHolder(holder: TeamMemberViewHolder, position: Int) {
         val teamMember = getItem(position)
-        holder.bind(/*clickListener,*/ teamMember)
+        holder.bind(clickListener, teamMember)
     }
 
     class MemberTeamListener(val clickListener: (idEmployee: String) -> Unit){

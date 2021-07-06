@@ -42,8 +42,24 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:teamMembersListData="@{viewmodel.teamMemberList.teamMemberList}"
             app:layout_constraintTop_toBottomOf="@id/divider_project_manager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/assignment_button"
             tools:listitem="@layout/team_member_item"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/assignment_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="@string/assignment_resources_button"
+            android:onClick="@{() -> viewmodel.postAssignment()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/team_members_list"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:canDoAssignment="@{viewmodel.enableClick}"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

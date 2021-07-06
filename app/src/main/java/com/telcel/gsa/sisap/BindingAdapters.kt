@@ -136,6 +136,11 @@ fun MaterialButton.bindSendClassification(enabled : Boolean){
     isEnabled = enabled
 }
 
+@BindingAdapter("canDoAssignment")
+fun MaterialButton.bindDoAssignment(enabled: Boolean){
+    isEnabled = enabled
+}
+
 @BindingAdapter("memberOption")
 fun MaterialCheckBox.bindMemberOption(teamMember: TeamMember?){
     teamMember?.let {

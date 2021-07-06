@@ -8,10 +8,14 @@ data class LoggedUserTO(
 
 data class InvolvedEmployee(
     @Json(name="idTempleado") val idEmployee: String,
-    @Json(name="esAsignadoLider") val isLeader : String,
-    @Json(name="esAsignadoASolicitud") val isAssigned : String
+    @Json(name="esAsignadoLider") val isLeader : Boolean,
+    @Json(name="esAsignadoASolicitud") val isAssigned : Boolean
 )
 
 data class GenericPostAppResponse(
     @Json(name="resultado") val result : Int
+)
+
+data class SolicitudSimpleTO(
+    @Json(name="idTSolicitud") val idFolio: String
 )

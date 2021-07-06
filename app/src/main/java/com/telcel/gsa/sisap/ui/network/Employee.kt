@@ -29,3 +29,14 @@ data class TeamMemberList(
 data class MembersTeamRequest(
     @Json(name="idTEmpleado") val idEmployee: String
 )
+
+data class AssignmentFolioTO(
+    @Json(name="idTSolicitud") val idFolio : String,
+    @Json(name="tEmpleadoInvoucradoTOs") val teamMember : List<InvolvedEmployee>,
+)
+
+data class AssignmentRequest(
+    @Json(name="solicitudSimpleTO") val folio : SolicitudSimpleTO,
+    @Json(name="asignaEmpleadoSolicitudTO") val assignmentFolioTO: AssignmentFolioTO,
+    @Json(name="usuarioLogeadoTO") val loggedUserTO: LoggedUserTO
+)

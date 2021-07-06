@@ -78,6 +78,11 @@ interface SisapApiService {
     @POST("sc/subordinateChief")
     suspend fun getMembersTeam(@Body membersTeamRequest: MembersTeamRequest): TeamMemberList
 
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("aal/AssignAnalistLeader")
+    suspend fun postAssignmentResources(@Body assignmentRequest: AssignmentRequest): GenericPostAppResponse
+
 }
 
 object SisapApi {

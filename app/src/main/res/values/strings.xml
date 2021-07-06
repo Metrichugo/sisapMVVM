@@ -35,6 +35,7 @@
     <string name="categorization_tag">CATEGORIZACIÓN</string>
     <string name="survey_tag">ENCUESTA DE SERVICIO</string>
     <string name="classify_folio_button">CLASIFICAR FOLIO</string>
+    <string name="assignment_resources_button">ASIGNAR RECURSOS</string>
     <string name="system_title">Sistema</string>
     <string name="module_title">Módulo</string>
     <string name="complexity_title">Complejidad</string>

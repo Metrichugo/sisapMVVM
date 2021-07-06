@@ -32,15 +32,15 @@ class AssignmentActivity : AppCompatActivity() {
             AssignmentViewModel::class.java)
         binding.viewmodel = assignmentViewModel
 
-        assignmentAdapter = AssignmentAdapter(/*AssignmentAdapter.MemberTeamListener {
+        assignmentAdapter = AssignmentAdapter(AssignmentAdapter.MemberTeamListener {
                 idEmployee -> assignmentViewModel.setSelectedResource(idEmployee)
-        }*/)
+        })
         binding.teamMembersList.adapter = assignmentAdapter
 
         binding.projectManagerTitle.setOnClickListener {
             assignmentViewModel.teamMemberList.observe(this,{ members ->
                 MaterialAlertDialogBuilder(this)
-                    .setTitle(getString(R.string.type_title))
+                    .setTitle(getString(R.string.project_manager_title))
                     .setPositiveButton(getString(R.string.accept_button)) {_,_ ->
                         assignmentViewModel.setProjectManagerSelected(members.TeamMemberList[checkedProjectManager])
                         binding.projectManager.text = parseMemberTeamName(members.TeamMemberList[checkedProjectManager])
@@ -50,6 +50,11 @@ class AssignmentActivity : AppCompatActivity() {
                     }.show()
             })
         }
+
+        assignmentViewModel.assignmentAction.observe(this,{
+            setResult(RESULT_OK)
+            finish()
+        })
     }
 
     fun parseMemberTeamName(teamMember: TeamMember) : String{
