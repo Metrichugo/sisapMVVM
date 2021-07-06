@@ -29,6 +29,10 @@
         <activity
             android:name=".ui.classification.ClassificationActivity"
             android:label="Clasificar de Folio"/>
+
+        <activity android:name=".ui.assignment.AssignmentActivity"
+            android:label="Asignación de Recursos"
+            />
     </application>
 
 </manifest>

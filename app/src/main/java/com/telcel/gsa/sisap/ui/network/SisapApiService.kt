@@ -73,6 +73,11 @@ interface SisapApiService {
     @POST("cf/classifyFolio")
     fun postClassificationCallback(@Body classificationRequest: ClassificationRequest): Call<GenericPostAppResponse>
 
+    @Headers("Content-Type: application/json; charset=utf-8",
+        "messageUUID: 356904090414635")
+    @POST("sc/subordinateChief")
+    suspend fun getMembersTeam(@Body membersTeamRequest: MembersTeamRequest): TeamMemberList
+
 }
 
 object SisapApi {

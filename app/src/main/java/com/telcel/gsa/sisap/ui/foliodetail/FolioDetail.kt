@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.telcel.gsa.sisap.R
 import com.telcel.gsa.sisap.databinding.ActivityFolioDetailBinding
+import com.telcel.gsa.sisap.ui.assignment.AssignmentActivity
 import com.telcel.gsa.sisap.ui.classification.ClassificationActivity
 
 class FolioDetail : FragmentActivity() {
@@ -20,6 +21,7 @@ class FolioDetail : FragmentActivity() {
     lateinit var idEmployee : String
     lateinit var pagerAdapter: FolioDetailPagerAdapter
     val classificationRequestCode : Int = 1
+    val assignmentRequestCode : Int = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,12 @@ class FolioDetail : FragmentActivity() {
                             classificationActivity.putExtra(getString(R.string.id_employee_extra),idEmployee)
                             classificationActivity.putExtra(getString(R.string.id_folio_extra),idFolio)
                             startActivityForResult(classificationActivity,classificationRequestCode)
+                        }
+                        2->{
+                            val assignmentActivity = Intent(applicationContext,AssignmentActivity::class.java)
+                            assignmentActivity.putExtra(getString(R.string.id_employee_extra),idEmployee)
+                            assignmentActivity.putExtra(getString(R.string.id_folio_extra),idFolio)
+                            startActivityForResult(assignmentActivity,assignmentRequestCode)
                         }
                     }
                 }

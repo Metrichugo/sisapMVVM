@@ -5,7 +5,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.textview.MaterialTextView
+import com.telcel.gsa.sisap.ui.assignment.AssignmentAdapter
 import com.telcel.gsa.sisap.ui.classification.ClassificationViewModel
 import com.telcel.gsa.sisap.ui.committee.CommitteeAdapter
 import com.telcel.gsa.sisap.ui.description.DescriptionViewModel
@@ -60,6 +62,14 @@ fun bindRecyclerViewCommitteeMembers(recyclerView: RecyclerView,data: List<Commi
 fun bindRecyclerViewHistorical(recyclerView: RecyclerView,data: List<ActionHistorical>?){
     data?.let {
         val adapter = recyclerView.adapter as HistoricalAdapter
+        adapter.submitList(data)
+    }
+}
+
+@BindingAdapter("teamMembersListData")
+fun bindRecyclerViewTeamMembers(recyclerView: RecyclerView,data: List<TeamMember>?){
+    data?.let{
+        val adapter = recyclerView.adapter as AssignmentAdapter
         adapter.submitList(data)
     }
 }
@@ -124,6 +134,13 @@ fun View.bindDateInput(priority: MPriority?){
 @BindingAdapter("sendClassification")
 fun MaterialButton.bindSendClassification(enabled : Boolean){
     isEnabled = enabled
+}
+
+@BindingAdapter("memberOption")
+fun MaterialCheckBox.bindMemberOption(teamMember: TeamMember?){
+    teamMember?.let {
+        text = teamMemberFullName(teamMember)
+    }
 }
 
 @BindingAdapter("dataLoading")

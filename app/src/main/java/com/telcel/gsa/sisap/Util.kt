@@ -1,6 +1,7 @@
 package com.telcel.gsa.sisap
 
 import com.telcel.gsa.sisap.ui.network.FolioDetail
+import com.telcel.gsa.sisap.ui.network.TeamMember
 
 fun parseComplexity(folioDetail: FolioDetail) : String{
     return when(folioDetail.complexity) {
@@ -22,6 +23,10 @@ fun parsePriority(folioDetail: FolioDetail) : String{
         5-> "URGENTE"
         else-> "-"
     }
+}
+
+fun teamMemberFullName(teamMember: TeamMember) : String {
+    return teamMember.name.plus(" ").plus(teamMember.lastName).plus(" ").plus(teamMember.secondLastName)
 }
 
 enum class LoadingStatus { LOADING, ERROR, DONE}

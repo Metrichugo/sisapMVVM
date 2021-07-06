@@ -19,7 +19,7 @@ class FolioFragment : Fragment() {
 
     lateinit var folioViewModel: FolioViewModel
     lateinit var adapter: FoliosAdapter
-    val idEmployee : String = "18858"
+    val idEmployee : String = "15278"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentFolioBinding.inflate(inflater)
