@@ -33,8 +33,13 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
     val filters : LiveData<ArrayList<String>>
     get() = _filters
 
+    private val _isRefreshing = MutableLiveData<Boolean>()
+    val isRefreshing : LiveData<Boolean>
+    get() = _isRefreshing
+
     init {
         getFolios()
+        _isRefreshing.value = false
     }
 
     fun onFolioClicked(id: Int){
@@ -55,7 +60,10 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
         }
     }
 
-
+    fun refreshData(){
+        getFolios()
+        _isRefreshing.value = true
+    }
 
     private fun getFolios() {
         viewModelScope.launch {
@@ -68,6 +76,7 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
                 _status.value = LoadingStatus.ERROR
                 _folios.value = FoliosList(ArrayList())
             }
+            _isRefreshing.value = false
         }
     }
 

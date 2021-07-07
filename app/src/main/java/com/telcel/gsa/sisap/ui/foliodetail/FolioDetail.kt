@@ -71,7 +71,12 @@ class FolioDetail : FragmentActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode){
-            classificationRequestCode,assignmentRequestCode -> if (resultCode == RESULT_OK) finish()
+            classificationRequestCode,assignmentRequestCode -> {
+                if (resultCode == RESULT_OK){
+                    setResult(RESULT_OK)
+                    finish()
+                }
+            }
         }
     }
 }

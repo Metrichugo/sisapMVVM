@@ -20,6 +20,7 @@ class FolioFragment : Fragment() {
     lateinit var folioViewModel: FolioViewModel
     lateinit var adapter: FoliosAdapter
     val idEmployee : String = "15278"
+    val detailFolioRequestCode : Int = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentFolioBinding.inflate(inflater)
@@ -48,10 +49,11 @@ class FolioFragment : Fragment() {
         val detailFragmentIntent = Intent(context,FolioDetail::class.java)
         detailFragmentIntent.putExtra(getString(R.string.id_folio_extra),idFolio)
         detailFragmentIntent.putExtra(getString(R.string.id_employee_extra),idEmployee)
-        startActivity(detailFragmentIntent)
+        startActivityForResult(detailFragmentIntent,detailFolioRequestCode)
     }
 
     private fun createChipsFilters(binding: FragmentFolioBinding, statusFilterList:List<String>?){
+        binding.stateChipGroupFilter.removeAllViews()
         statusFilterList?.forEach { it ->
             val chip = Chip(context)
             chip.isCheckable = true
@@ -74,5 +76,12 @@ class FolioFragment : Fragment() {
         }
     }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode){
+            detailFolioRequestCode -> {
+                //TODO: VOLVER A CARGAR LA INFORMACIÓN
+            }
+        }
+    }
 }
