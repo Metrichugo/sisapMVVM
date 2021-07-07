@@ -35,13 +35,29 @@
             android:layout_width="match_parent"
             app:layout_constraintTop_toBottomOf="@id/project_manager"
             style="@style/DiviverStyle"/>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/select_all_resources"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_all_resources"
+            android:onClick="@{()->viewmodel.setAllResourcesSelected()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_project_manager"
+            app:layout_constraintBottom_toTopOf="@id/team_members_list"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/team_members_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:teamMembersListData="@{viewmodel.teamMemberList.teamMemberList}"
-            app:layout_constraintTop_toBottomOf="@id/divider_project_manager"
+            app:layout_constraintStart_toStartOf="@id/select_all_resources"
+            app:layout_constraintEnd_toEndOf="@id/select_all_resources"
+            app:layout_constraintTop_toBottomOf="@id/select_all_resources"
             app:layout_constraintBottom_toTopOf="@id/assignment_button"
             tools:listitem="@layout/team_member_item"/>
 

@@ -8,7 +8,7 @@ data class LoggedUserTO(
 
 data class InvolvedEmployee(
     @Json(name="idTempleado") val idEmployee: String,
-    @Json(name="esAsignadoLider") val isLeader : Boolean,
+    @Json(name="esAsignadoLider") var isLeader : Boolean,
     @Json(name="esAsignadoASolicitud") val isAssigned : Boolean
 )
 

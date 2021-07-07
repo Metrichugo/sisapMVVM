@@ -26,6 +26,10 @@ class AssignmentViewModel(private val idEmployee: String, private val idFolio: S
     val assignmentAction : LiveData<GenericPostAppResponse?>
         get() = _assignmentAction
 
+    private val _allResources = MutableLiveData<Boolean>()
+    val allResources : LiveData<Boolean>
+        get() = _allResources
+
     init {
         getTeamMemberList()
     }
@@ -46,18 +50,50 @@ class AssignmentViewModel(private val idEmployee: String, private val idFolio: S
         _enableClick.value = atLeastOneIsSelected()
     }
 
+    fun setAllResourcesSelected(){
+        _teamMembersList.value?.let {
+            it.TeamMemberList.forEach { teamMember ->
+                teamMember.isAssignedAsDeveloper = !teamMember.isAssignedAsDeveloper
+            }
+            if (_allResources.value != null){
+                _allResources.value?.let { allResources->
+                    _allResources.value = !allResources
+                }
+            }else{
+                _allResources.value = true
+            }
+            _enableClick.value = _allResources.value != null && _projectManager.value != null
+        }
+    }
+
     fun postAssignment(){
         var involvedEmployees = ArrayList<InvolvedEmployee>()
         _teamMembersList.value?.let {
-            val(assigned,_) = it.TeamMemberList.partition { member ->
-                member.isAssignedAsDeveloper
-            }
-            assigned.forEach { member ->
-               val involvedEmployee = InvolvedEmployee(member.idEmployee,member.isAssignedAsLeader,member.isAssignedAsDeveloper)
-                involvedEmployees.add(involvedEmployee)
+            if (_allResources.value != null){
+                _allResources.value?.let { _->
+                    it.TeamMemberList.forEach { member ->
+                        val involvedEmployee = InvolvedEmployee(member.idEmployee,member.isAssignedAsLeader,member.isAssignedAsDeveloper)
+                        involvedEmployees.add(involvedEmployee)
+                    }
+                }
+            }else{
+                val(assigned,_) = it.TeamMemberList.partition { member ->
+                    member.isAssignedAsDeveloper
+                }
+                assigned.forEach { member ->
+                    val involvedEmployee = InvolvedEmployee(member.idEmployee,member.isAssignedAsLeader,member.isAssignedAsDeveloper)
+                    involvedEmployees.add(involvedEmployee)
+                }
             }
             _projectManager.let { leader->
-                involvedEmployees.add(InvolvedEmployee(leader.value!!.idEmployee,true,true))
+                val involvedEmployee = involvedEmployees.find { employee->
+                    employee.idEmployee == leader.value?.idEmployee
+                }?.also { founded ->
+                    founded.isLeader = true
+                }
+                if(involvedEmployee == null){
+                    involvedEmployees.add(InvolvedEmployee(leader.value!!.idEmployee,true,true))
+                }
             }
         }
 
