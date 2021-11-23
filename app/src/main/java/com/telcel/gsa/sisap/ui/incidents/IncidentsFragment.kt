@@ -13,7 +13,7 @@ class IncidentsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentIncidentsBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        val incidentViewModelFactory = IncidentViewModelFactory("18858")
+        val incidentViewModelFactory = IncidentViewModelFactory("15278")
         binding.viewModel = ViewModelProvider(this,incidentViewModelFactory).get(IncidentsViewModel::class.java)
         binding.incidentsList.adapter = IncidentsAdapter()
         return binding.root

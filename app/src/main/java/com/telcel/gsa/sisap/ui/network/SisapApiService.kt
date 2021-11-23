@@ -14,7 +14,7 @@ private const val BASE_URL_PRODUCTION = "https://m.sisact.telcel.com:444/sisap-w
 private const val BASE_URL_DEVELOPMENT = "http://10.191.209.43:9080/sisap-ws/release/sisap/"
 private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 private val retrofit = Retrofit.Builder().addConverterFactory(MoshiConverterFactory.create(moshi)).baseUrl(
-    BASE_URL_DEVELOPMENT).build()
+    BASE_URL_PRODUCTION).build()
 
 interface SisapApiService {
 
