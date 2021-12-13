@@ -1,25 +1,24 @@
 package com.telcel.gsa.sisap.ui.folio
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.telcel.gsa.sisap.LoadingStatus
-import com.telcel.gsa.sisap.ui.network.FoliosList
-import com.telcel.gsa.sisap.ui.network.FoliosRequest
-import com.telcel.gsa.sisap.ui.network.SisapApi
+import com.telcel.gsa.sisap.database.getDatabase
+import com.telcel.gsa.sisap.repository.FoliosRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class FolioViewModel(private val idEmployee: String) : ViewModel() {
+class FolioViewModel(private val idEmployee: String, application: Application) : ViewModel() {
 
     private val _status = MutableLiveData<LoadingStatus>()
     val status : LiveData<LoadingStatus>
     get() = _status
 
-    private val _folios = MutableLiveData<FoliosList>()
-    val folios : LiveData<FoliosList>
-    get() = _folios
+    private val database = getDatabase(application)
+    private val foliosRepository = FoliosRepository(database)
 
     private val _navigateToFolioDetail = MutableLiveData<Int?>()
     val navigateToFolioDetail: LiveData<Int?>
@@ -38,9 +37,13 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
     get() = _isRefreshing
 
     init {
-        getFolios()
-        _isRefreshing.value = false
+        viewModelScope.launch {
+            foliosRepository.refreshFolios()
+            _isRefreshing.value = false
+        }
     }
+
+    val folios = foliosRepository.folios
 
     fun onFolioClicked(id: Int){
         _navigateToFolioDetail.value = id
@@ -61,28 +64,30 @@ class FolioViewModel(private val idEmployee: String) : ViewModel() {
     }
 
     fun refreshData(){
-        getFolios()
-        _isRefreshing.value = true
+        viewModelScope.launch {
+            foliosRepository.refreshFolios()
+            _isRefreshing.value = false
+        }
     }
 
     private fun getFolios() {
         viewModelScope.launch {
             _status.value = LoadingStatus.LOADING
             try {
-                _folios.value = SisapApi.retrofitService.getFolios(FoliosRequest(idEmployee))
+                //_folios.value = SisapApi.retrofitService.getFolios(FoliosRequest(idEmployee))
                 getStatusFilters()
                 _status.value = LoadingStatus.DONE
             }catch (e:Exception){
                 _status.value = LoadingStatus.ERROR
-                _folios.value = FoliosList(ArrayList())
+                //_folios.value = FoliosList(ArrayList())
             }
             _isRefreshing.value = false
         }
     }
 
-    private fun getStatusFilters(){
+    fun getStatusFilters(){
         val statusArray = ArrayList<String>()
-        var distinctFolios = _folios.value?.foliosList?.distinctBy {
+        val distinctFolios = folios.value?.distinctBy {
             folio -> folio.status
           }
         distinctFolios?.forEach {

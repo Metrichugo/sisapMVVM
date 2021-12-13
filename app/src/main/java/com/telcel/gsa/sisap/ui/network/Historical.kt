@@ -22,7 +22,7 @@ data class ActionHistorical(
     @Json(name="idTestatusbysolicitud") val idStatusByRequest : Int,
     @Json(name="estatus") val status : String,
     @Json(name="usuarioModificacion") val modificationUser : String,
-    @Json(name="fechaCierre") val deadLine : String,
+    @Json(name="fechaCierre") val deadLine : String?,
     @Json(name="bactivaAccion") val activateAction : Boolean,
     @Json(name="bactivaFolioAsociado") val activateAssociatedFolio : Boolean
 )

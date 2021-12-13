@@ -6,8 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.telcel.gsa.sisap.databinding.FolioItemBinding
-import com.telcel.gsa.sisap.ui.network.Folio
-import com.telcel.gsa.sisap.ui.network.FoliosList
+import com.telcel.gsa.sisap.domain.Folio
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,14 +44,14 @@ class FoliosAdapter(val clickListener: FolioListener): ListAdapter<Folio,FoliosA
         holder.bind(clickListener, folio)
     }
 
-    fun applyFilters(filters: ArrayList<String>, value: FoliosList?){
+    fun applyFilters(filters: ArrayList<String>, value: List<Folio>?){
         adapterScope.launch {
-            val filteredFolios = value?.foliosList?.filter{
+            val filteredFolios = value?.filter{
                 filters.contains(it.status)
             }
             withContext(Dispatchers.Main){
                 if(filteredFolios.isNullOrEmpty()){
-                    submitList(value?.foliosList)
+                    submitList(value)
                 }else{
                     submitList(filteredFolios)
                 }

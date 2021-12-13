@@ -43,12 +43,12 @@
             android:padding="@dimen/activity_horizontal_padding"
             android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:foliosListData= "@{viewModel.folios.foliosList}"
+            app:foliosListData= "@{viewModel.folios}"
             tools:itemCount="16"
             tools:listitem="@layout/folio_item"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <com.airbnb.lottie.LottieAnimationView
+        <!--com.airbnb.lottie.LottieAnimationView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:dataLoading="@{viewModel.status}"
@@ -57,6 +57,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"/-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

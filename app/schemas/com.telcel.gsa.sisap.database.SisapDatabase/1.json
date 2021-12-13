@@ -1,0 +1,64 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "9badaf39e7aebd3b270f5cf7c6b71a62",
+    "entities": [
+      {
+        "tableName": "DatabaseFolio",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`daysPassed` INTEGER NOT NULL, `action` TEXT NOT NULL, `title` TEXT NOT NULL, `idFolio` INTEGER NOT NULL, `status` TEXT NOT NULL, `creationDate` TEXT NOT NULL, PRIMARY KEY(`idFolio`))",
+        "fields": [
+          {
+            "fieldPath": "daysPassed",
+            "columnName": "daysPassed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "action",
+            "columnName": "action",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idFolio",
+            "columnName": "idFolio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "creationDate",
+            "columnName": "creationDate",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idFolio"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9badaf39e7aebd3b270f5cf7c6b71a62')"
+    ]
+  }
+}

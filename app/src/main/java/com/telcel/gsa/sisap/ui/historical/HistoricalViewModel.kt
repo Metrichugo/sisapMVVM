@@ -1,5 +1,6 @@
 package com.telcel.gsa.sisap.ui.historical
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,8 +26,11 @@ class HistoricalViewModel(private val idFolio : Int) : ViewModel() {
         viewModelScope.launch {
             try {
                 _historicalFolio.value = SisapApi.retrofitService.getHistoricalFolio(HistoricalFolioRequest(idFolio.toString()))
+                Log.d("Historical",_historicalFolio.value.toString())
             }catch (e : Exception){
                 _historicalFolio.value = HistoricalFolio(ArrayList())
+                e.message?.let { Log.d("Historical", it) }
+                Log.d("Historical","Error al recuperar el historico del folio")
             }
         }
     }

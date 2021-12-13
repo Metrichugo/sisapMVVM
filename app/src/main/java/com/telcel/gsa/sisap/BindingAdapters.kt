@@ -7,6 +7,7 @@ import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.textview.MaterialTextView
+import com.telcel.gsa.sisap.domain.Folio
 import com.telcel.gsa.sisap.ui.assignment.AssignmentAdapter
 import com.telcel.gsa.sisap.ui.classification.ClassificationViewModel
 import com.telcel.gsa.sisap.ui.committee.CommitteeAdapter
@@ -80,13 +81,13 @@ fun MaterialTextView.bindTextViewFullName(employee: Employee){
 }
 
 @BindingAdapter("complexityString")
-fun MaterialTextView.bindTextViewComplexity(folioDetail: FolioDetail){
-    text = parseComplexity(folioDetail)
+fun MaterialTextView.bindTextViewComplexity(folioDetail: FolioDetail?){
+    text = folioDetail?.let { parseComplexity(it) }
 }
 
 @BindingAdapter("priorityString")
-fun MaterialTextView.bindTextViewPriority(folioDetail: FolioDetail){
-    text = parsePriority(folioDetail)
+fun MaterialTextView.bindTextViewPriority(folioDetail: FolioDetail?){
+    text = folioDetail?.let { parsePriority(it) }
 }
 
 @BindingAdapter("uploadedDate")

@@ -14,6 +14,7 @@ import retrofit2.Response
 import java.lang.Exception
 
 class FolioDetailViewModel(private val idFolio: String, private val idEmployee: String) : ViewModel() {
+    val defaultDetailFolio = FolioDetail(idFolio = 0 , systemString = "-", description = "-", status = "-",complexity=0,priority=0,date="01/01/1990 00:00:00",isAssigned = true, sox = "-",title = "-",flowControl = null,estimatedTime =  0 , involvedEmployees = listOf())
     private val _detailFolio = MutableLiveData<FolioDetail?>()
     val detailFolio : LiveData<FolioDetail?>
         get() = _detailFolio
@@ -27,7 +28,7 @@ class FolioDetailViewModel(private val idFolio: String, private val idEmployee: 
             try{
                 _detailFolio.value = SisapApi.retrofitService.getDetailFolio(FolioDetailRequest(idFolio,idEmployee))
             }catch (e: Exception){
-                _detailFolio.value = null
+                _detailFolio.value = defaultDetailFolio
             }
         }
     }

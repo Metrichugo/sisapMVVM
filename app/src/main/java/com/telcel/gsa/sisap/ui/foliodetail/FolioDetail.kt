@@ -47,7 +47,7 @@ class FolioDetail : FragmentActivity() {
                     else-> tab.text = getString(R.string.documents_tab_title)
                 }
             }.attach()
-            binding.actionButton.setOnClickListener { view: View ->
+            binding.actionButton.setOnClickListener { _ : View ->
                 it?.flowControl?.let { flowControl ->
                     when(flowControl.idFlowControl){
                         1-> {

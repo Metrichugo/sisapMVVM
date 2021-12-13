@@ -25,9 +25,9 @@ class FolioDocumentsFragment : Fragment(){
         folioDocumentsViewModel = ViewModelProvider(this,folioDocumentsViewModelFactory).get(FolioDocumentsViewModel::class.java)
         binding.viewModel = folioDocumentsViewModel
         folioDocumentsAdapter = FolioDocumentsAdapter(FolioDocumentsAdapter.DocumentListener{
-            idDocument -> folioDocumentsViewModel.onDocumentClicked(idFolio)
+            _ -> folioDocumentsViewModel.onDocumentClicked(idFolio)
         })
-        var mDividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        val mDividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         binding.documentsFolioList.addItemDecoration(mDividerItemDecoration)
         binding.documentsFolioList.adapter = folioDocumentsAdapter
         return binding.root
