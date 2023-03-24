@@ -2,6 +2,7 @@ package com.telcel.gsa.sisap.ui.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.telcel.gsa.sisap.BuildConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
@@ -10,12 +11,12 @@ import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
-private const val BASE_URL_PRODUCTION = "https://m.sisact.telcel.com:444/sisap-ws/release/sisap/"
+private const val BASE_URL_PRODUCTION = "https://oam.telcelinstitucional.com:5442/sisap-ws/release/sisap/"
 private const val BASE_URL_DEVELOPMENT = "http://10.191.209.43:9080/sisap-ws/release/sisap/"
 private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 private val retrofit =
     Retrofit.Builder().addConverterFactory(MoshiConverterFactory.create(moshi)).baseUrl(
-        BASE_URL_DEVELOPMENT
+        BuildConfig.SERVER_URL
     ).build()
 
 interface SisapApiService {

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1068160528010",
+    "project_id": "sisap-mvvm",
+    "storage_bucket": "sisap-mvvm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068160528010:android:9fbf2c3e4f7780a2784773",
+        "android_client_info": {
+          "package_name": "com.telcel.gsa.sisap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068160528010-gcshh4ae0vknl8u5l6mb1tid88nkrm9l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.telcel.gsa.sisap",
+            "certificate_hash": "bd4040f19797f9e7fbe1659dbb848fd7c56b7297"
+          }
+        },
+        {
+          "client_id": "1068160528010-5ha7ij5ea8ip3826st8bgvn8bj3o2225.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHmv1fyx6UQjHKvaMIHywliVr6bQh7I-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068160528010-5ha7ij5ea8ip3826st8bgvn8bj3o2225.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

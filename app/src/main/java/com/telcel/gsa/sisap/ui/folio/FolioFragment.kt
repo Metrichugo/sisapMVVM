@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
 import com.telcel.gsa.sisap.R
@@ -33,7 +32,7 @@ class FolioFragment : Fragment() {
         val binding = FragmentFolioBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val folioViewModelFactory = FolioViewModelFactory(idEmployee,requireActivity().application)
-        folioViewModel = ViewModelProvider(this,folioViewModelFactory).get(FolioViewModel::class.java)
+        folioViewModel = ViewModelProvider(this,folioViewModelFactory)[FolioViewModel::class.java]
         binding.viewModel = folioViewModel
         adapter = FoliosAdapter(FoliosAdapter.FolioListener {
             idFolio -> folioViewModel.onFolioClicked(idFolio)

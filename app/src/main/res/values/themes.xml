@@ -21,6 +21,10 @@
         <item name="android:textColor">@color/color_secondary</item>
     </style>
 
+    <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/color_surface</item>
+    </style>
+
     <style name="TextAppearance.Body.Cardview" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textColor">@color/gray</item>
     </style>

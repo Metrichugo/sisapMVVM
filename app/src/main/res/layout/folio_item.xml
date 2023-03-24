@@ -16,7 +16,8 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:onClick="@{() -> clickListener.onClick(folio)}"
         app:cardCornerRadius="@dimen/cardview_default_radius"
-        app:cardElevation="@dimen/high_card_elevation">
+        app:cardElevation="@dimen/high_card_elevation"
+        style="@style/Widget.App.CardView">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

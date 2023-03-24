@@ -21,7 +21,7 @@ class FoliosRepository(private val database: SisapDatabase) {
     suspend fun refreshFolios(){
         withContext(Dispatchers.IO){
             try {
-                val userFolios = SisapApi.retrofitService.getFolios(FoliosRequest("15278"))
+                val userFolios = SisapApi.retrofitService.getFolios(FoliosRequest("18858"))
                 database.folioDao.insertAll(*userFolios.asDataBaseModel())
             }catch(e : Exception){
                 e.message?.let { Log.d("FoliosRepository", it) }

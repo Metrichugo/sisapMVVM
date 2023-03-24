@@ -25,6 +25,13 @@
         <item name="android:capitalize">sentences</item>
     </style>
 
+    <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/color_surface</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+    </style>
+
     <!--Default Styles-->
     <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="textAllCaps">true</item>
