@@ -2,10 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="document"
             type="com.telcel.gsa.sisap.ui.network.Document" />
+
         <variable
             name="clickListener"
             type="com.telcel.gsa.sisap.ui.documents.FolioDocumentsAdapter.DocumentListener" />
@@ -14,53 +17,59 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/document_name"
+            style="@style/TextAppearance.TitleInline"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{document.documentsInformation.fileDescription.get(0).name}"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@{document.documentsInformation.fileDescription.get(0).name}"
             app:layout_constraintEnd_toStartOf="@+id/download_file"
-            tools:text="SDS_AI_2021-876417_VR.doc"
-            style="@style/TextAppearance.TitleInline"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="SDS_AI_2021-876417_VR.doc" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/document_type"
+            style="@style/TextAppearance.Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{document.type}"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            app:layout_constraintTop_toBottomOf="@+id/document_name"
-            app:layout_constraintStart_toStartOf="@+id/document_name"
+            android:text="@{document.type}"
             app:layout_constraintEnd_toEndOf="@id/document_name"
-            tools:text="ANALISIS DE IMPACTO (SDS)"
-            style="@style/TextAppearance.Subtitle"/>
+            app:layout_constraintStart_toStartOf="@+id/document_name"
+            app:layout_constraintTop_toBottomOf="@+id/document_name"
+            tools:text="ANALISIS DE IMPACTO (SDS)" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/upload_date"
+            style="@style/TextAppearance.Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
-            app:uploadedDate="@{document.uploadDate}"
-            app:layout_constraintTop_toBottomOf="@+id/document_type"
-            app:layout_constraintStart_toStartOf="@+id/document_type"
-            app:layout_constraintEnd_toEndOf="@+id/document_type"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Última actualización: 2021/03/29 18:14:36"
-            style="@style/TextAppearance.Body"/>
+            app:layout_constraintEnd_toEndOf="@+id/document_type"
+            app:layout_constraintStart_toStartOf="@+id/document_type"
+            app:layout_constraintTop_toBottomOf="@+id/document_type"
+            app:uploadedDate="@{document.uploadDate}"
+            tools:text="Última actualización: 2021/03/29 18:14:36" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/download_file"
+            style="@style/Button.Outlined"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            app:layout_constraintTop_toBottomOf="@+id/document_name"
+            android:contentDescription="@string/download_file"
+            android:onClick="@{() -> clickListener.onClick(document)}"
+            app:icon="@drawable/ic_arrow_downward"
             app:layout_constraintBottom_toBottomOf="@+id/document_type"
             app:layout_constraintEnd_toEndOf="parent"
-            app:icon="@drawable/ic_arrow_downward"
-            style="@style/Button.Outlined"/>
+            app:layout_constraintTop_toBottomOf="@+id/document_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

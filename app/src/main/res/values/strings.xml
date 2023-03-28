@@ -48,4 +48,6 @@
     <string name="date_title">Fecha</string>
     <string name="project_manager_title">Encargado del proyecto</string>
     <string name="select_all_resources">Seleccionar todos los recursos</string>
+    <string name="download_file">Descargar archivo</string>
+    <string name="downloading">Descargando</string>
 </resources>
